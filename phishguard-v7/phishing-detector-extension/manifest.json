@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "Phishing Email Detector",
+  "version": "1.0.0",
+  "description": "Phát hiện và cảnh báo email lừa đảo (phishing) bằng AI",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "notifications",
+    "contextMenus",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://mail.google.com/*",
+    "https://outlook.live.com/*",
+    "https://outlook.office.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mail.google.com/*",
+        "https://outlook.live.com/*",
+        "https://outlook.office.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
